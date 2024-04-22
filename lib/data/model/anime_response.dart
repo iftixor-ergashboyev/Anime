@@ -6,18 +6,18 @@ class AnimeResponse {
 
   AnimeResponse.fromJson(Map<String, dynamic> json) {
     pagination = json['pagination'] != null
-        ? new Pagination.fromJson(json['pagination'])
+        ? Pagination.fromJson(json['pagination'])
         : null;
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(Data.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     if (this.pagination != null) {
       data['pagination'] = this.pagination!.toJson();
     }
@@ -41,11 +41,11 @@ class Pagination {
     lastVisiblePage = json['last_visible_page'];
     hasNextPage = json['has_next_page'];
     currentPage = json['current_page'];
-    items = json['items'] != null ? new Items.fromJson(json['items']) : null;
+    items = json['items'] != null ? Items.fromJson(json['items']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['last_visible_page'] = this.lastVisiblePage;
     data['has_next_page'] = this.hasNextPage;
     data['current_page'] = this.currentPage;
@@ -70,7 +70,7 @@ class Items {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['count'] = this.count;
     data['total'] = this.total;
     data['per_page'] = this.perPage;
@@ -102,7 +102,7 @@ class Data {
     malId = json['mal_id'];
     url = json['url'];
     images =
-    json['images'] != null ? new Images.fromJson(json['images']) : null;
+    json['images'] != null ? Images.fromJson(json['images']) : null;
     name = json['name'];
     nameKanji = json['name_kanji'];
     nicknames = json['nicknames'].cast<String>();
@@ -111,7 +111,7 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['mal_id'] = this.malId;
     data['url'] = this.url;
     if (this.images != null) {
@@ -133,12 +133,12 @@ class Images {
   Images({this.jpg, this.webp});
 
   Images.fromJson(Map<String, dynamic> json) {
-    jpg = json['jpg'] != null ? new Jpg.fromJson(json['jpg']) : null;
-    webp = json['webp'] != null ? new Webp.fromJson(json['webp']) : null;
+    jpg = json['jpg'] != null ? Jpg.fromJson(json['jpg']) : null;
+    webp = json['webp'] != null ? Webp.fromJson(json['webp']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     if (this.jpg != null) {
       data['jpg'] = this.jpg!.toJson();
     }
@@ -159,7 +159,7 @@ class Jpg {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['image_url'] = this.imageUrl;
     return data;
   }
@@ -168,6 +168,7 @@ class Jpg {
 class Webp {
   String? imageUrl;
   String? smallImageUrl;
+
   Webp({this.imageUrl, this.smallImageUrl});
 
   Webp.fromJson(Map<String, dynamic> json) {
@@ -176,7 +177,7 @@ class Webp {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['image_url'] = this.imageUrl;
     data['small_image_url'] = this.smallImageUrl;
     return data;
