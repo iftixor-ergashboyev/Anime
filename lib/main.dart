@@ -1,25 +1,41 @@
 import 'package:anime/presentation/page/home_page.dart';
+import 'package:anime/presentation/page/intro_page.dart';
+import 'package:anime/presentation/page/main_page.dart';
 import 'package:anime/presentation/viewmodel/home_viewmodel.dart';
+import 'package:anime/presentation/viewmodel/intro_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'data/repository/local_repository_impl.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final _repo = LocalRepositoryImpl();
+
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (v) => HomeViewModel(),
+    // delete
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => HomeViewModel()),
+        ChangeNotifierProvider(create: (context) => IntroProvider()),
+      ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,  
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey,brightness: Brightness.dark),
           useMaterial3: true,
         ),
-        home: const HomePage(),
+        home: FutureBuilder(
+          future: _repo.isFirstTime(),
+          builder: (context, data) {
+            return data.data == true ? const HomePage() : MainPage();
+          },
+        ),
       ),
     );
   }
