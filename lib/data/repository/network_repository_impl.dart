@@ -9,9 +9,9 @@ class NetworkRepositoryImpl extends NetworkRepository {
   final _service = AnimeService(buildDioClient(Constants.baseUrl));
 
   @override
-  Future<List<Anime>> getAnimeList() async {
+  Future<List<Anime>> getAnimeList(int page) async {
     try {
-      final response = await _service.getAnimeList();
+      final response = await _service.getAnimeList(page);
       final List<Anime> animeList = response.data?.map((e) => e.toAnime()).toList() ?? [];
       return animeList;
     } catch(e) {

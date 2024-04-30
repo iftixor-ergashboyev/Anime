@@ -19,9 +19,9 @@ class _AnimeService implements AnimeService {
   String? baseUrl;
 
   @override
-  Future<AnimeResponse> getAnimeList() async {
+  Future<AnimeResponse> getAnimeList(int page) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio

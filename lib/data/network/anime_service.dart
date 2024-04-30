@@ -10,7 +10,9 @@ abstract class AnimeService {
   factory AnimeService(Dio dio, {String baseUrl}) = _AnimeService;
 
   @GET("/top/characters")
-  Future<AnimeResponse> getAnimeList();
+  Future<AnimeResponse> getAnimeList(
+      @Query("page") int page
+      );
 }
 
 Dio buildDioClient(String baseUrl) { // build dio client
