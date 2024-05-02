@@ -1,6 +1,5 @@
 import 'package:anime/presentation/page/home_page.dart';
 import 'package:flutter/material.dart';
-
 import '../widget/bottom_tab.dart';
 
 class MainPage extends StatefulWidget {
@@ -15,7 +14,7 @@ class _MainPageState extends State<MainPage> {
 
   final _pages = [
     HomePage(),
-  Container(),
+    Container(),
     Container(),
     Container(),
   ];
@@ -23,11 +22,13 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: MyBottomTab(
-        selectedIndex: _selectedIndex,
-        onClick: (index) => setState(() { _selectedIndex = index; }),
-      ),
+      body: Stack(
+        children: [
+          Expanded(child: _pages[_selectedIndex]),
+          Positioned(bottom: 0,right:0, left: 0,child: MyBottomTab(selectedIndex: _selectedIndex, onClick: (index) => setState(() {_selectedIndex = index;})
+          ))
+        ],
+      )
     );
   }
 }

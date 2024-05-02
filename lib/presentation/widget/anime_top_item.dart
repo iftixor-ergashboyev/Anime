@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../../domain/model/anime.dart';
 
@@ -19,7 +22,7 @@ class AnimeTopItem extends StatelessWidget {
           ClipRRect( borderRadius: BorderRadius.circular(12), child: Image.network(anime.image ?? "", fit: BoxFit.fill, width: double.infinity, height: double.infinity)),
           Center(
             child: Icon(
-              CupertinoIcons.play_circle, color: Colors.yellow,
+              CupertinoIcons.play_circle, color: Colors.white, size: 24,
             ),
           ),
           Positioned(
@@ -44,12 +47,31 @@ class AnimeTopItem extends StatelessWidget {
               children: [
                 Text(anime.name ?? "", style: TextStyle(fontSize: 20, color: Colors.white)),
                 SizedBox(height: 8),
-                Text(anime.nameKanji ?? "", style: TextStyle(fontSize: 14, color: Colors.white))
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(anime.nameKanji ?? "", style: TextStyle(fontSize: 14, color: Colors.white)),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(CupertinoIcons.star_fill, color: CupertinoColors.activeOrange, size: 18),
+                        const Gap(2),
+                        Text(_getRandomRating()),
+                      ],
+                    ),
+                  ],
+                ),
               ],
             ),
           ))
         ],
       ),
     );
+  }
+  _getRandomRating() {
+    final random = Random().nextInt(6) + 5;
+    return "$random/10";
   }
 }

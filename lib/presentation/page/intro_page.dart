@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:anime/data/repository/local_repository_impl.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -4,7 +4,6 @@ import 'package:anime/presentation/widget/anime_top_item.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
@@ -44,7 +43,7 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index, v) =>
                   AnimeTopItem(onClick: () {}, anime: _provider.animeList[index]),
               options: CarouselOptions(
-                  autoPlay: false,
+                  autoPlay: true,
                   enlargeCenterPage: true,
                   viewportFraction: 0.6,
                   aspectRatio: 1.2
@@ -52,7 +51,13 @@ class _HomePageState extends State<HomePage> {
             )
         ),
         const Gap(10),
-       const  Text("/t/t/tNew Episodes", style: TextStyle(fontSize: 17),),
+       Row(
+         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+         children: [
+           const  Text("New Episodes", style: TextStyle(fontSize: 17),),
+           CupertinoButton(child: Text("See All", style: TextStyle(fontSize: 17)), onPressed: () {})
+         ],
+       ),
         const Gap(10),
         SizedBox(
           height: 160,
@@ -64,7 +69,13 @@ class _HomePageState extends State<HomePage> {
         ) : Container()
           ),
         const Gap(10),
-        const  Text("/t/t/Trending now", style: TextStyle(fontSize: 17),),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const  Text("Trending now", style: TextStyle(fontSize: 17),),
+            CupertinoButton(child: Text("See All", style: TextStyle(fontSize: 17)), onPressed: () {})
+          ],
+        ),
         const Gap(10),
         SizedBox(
             height: 160,
@@ -78,5 +89,4 @@ class _HomePageState extends State<HomePage> {
       ],
     );
   }
-
 }
