@@ -1,7 +1,8 @@
-import 'package:anime/data/repository/network_repository_impl.dart';
-import 'package:anime/domain/repository/network_repository.dart';
 import 'package:flutter/cupertino.dart';
+
+import '../../data/repository/network_repository_impl.dart';
 import '../../domain/model/anime.dart';
+import '../../domain/repository/network_repository.dart';
 
 class HomeViewModel extends ChangeNotifier {
   final NetworkRepository _repo = NetworkRepositoryImpl();
@@ -14,8 +15,8 @@ class HomeViewModel extends ChangeNotifier {
     final list2 = await _repo.getAnimeList(2);
     final list3 = await _repo.getAnimeList(3);
     animeList.addAll(list);
-    animeList.addAll(list2);
-    animeList.addAll(list3);
+    animeList2.addAll(list2);
+    animeList3.addAll(list3);
     notifyListeners();
   }
 }
