@@ -39,7 +39,7 @@ dependencies:
   gap: ^3.0.1
   retrofit: ^4.0.3
   json_annotation: ^4.8.1
-  build_runner: ^2.4.6
+  build_runner: ^2.4.9
   retrofit_generator: ^8.0.4
   jwt_decoder: ^2.0.1
   dio: ^5.3.4
@@ -52,6 +52,10 @@ dependencies:
   shimmer: ^3.0.0
   carousel_slider: ^4.2.1
   animations: ^2.0.11
+  floor: ^1.4.2
+  marquee: ^2.2.3
+  floor_generator: ^1.4.2
+  sqflite: ^2.3.3+1
 
 dev_dependencies:
   flutter_test:

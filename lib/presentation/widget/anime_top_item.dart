@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 
 import '../../domain/model/anime.dart';
@@ -22,7 +23,7 @@ class AnimeTopItem extends StatelessWidget {
           children: [
             ClipRRect(borderRadius: BorderRadius.circular(12),child: Image.network(anime.image ?? "",fit: BoxFit.fill, width: double.infinity,height: double.infinity,)),
             const Center(
-              child: Icon(CupertinoIcons.play_circle,color: Colors.red,size: 55),
+              child: Icon(CupertinoIcons.play_circle,color: Colors.white,size: 55),
             ),
             Positioned(
                 bottom: 0,
@@ -53,7 +54,9 @@ class AnimeTopItem extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(anime.nameKanji ?? "",style: const TextStyle(color: Colors.white)),
+                          Expanded(child: Text(anime.nameKanji ?? "",
+                              style: const TextStyle(color: Colors.white),
+                              overflow: TextOverflow.ellipsis)),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
