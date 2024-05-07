@@ -1,5 +1,4 @@
 import 'package:anime/presentation/page/home_page.dart';
-import 'package:anime/presentation/page/intro_page.dart';
 import 'package:anime/presentation/page/main_page.dart';
 import 'package:anime/presentation/viewmodel/home_viewmodel.dart';
 import 'package:anime/presentation/viewmodel/intro_provider.dart';
@@ -14,7 +13,7 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  final _repo = LocalRepositoryImpl();
+  final _repo = LocalRepositoryImpl();  
 
   @override
   Widget build(BuildContext context) {
