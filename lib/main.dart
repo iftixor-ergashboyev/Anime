@@ -1,5 +1,6 @@
 import 'package:anime/presentation/page/home_page.dart';
 import 'package:anime/presentation/page/main_page.dart';
+import 'package:anime/presentation/viewmodel/detail_provider.dart';
 import 'package:anime/presentation/viewmodel/home_viewmodel.dart';
 import 'package:anime/presentation/viewmodel/intro_provider.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => HomeViewModel()),
         ChangeNotifierProvider(create: (context) => IntroProvider()),
+        ChangeNotifierProvider(create: (context) => DetailProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

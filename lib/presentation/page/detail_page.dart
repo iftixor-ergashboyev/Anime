@@ -1,7 +1,9 @@
 import 'package:anime/domain/model/anime.dart';
+import 'package:anime/presentation/viewmodel/detail_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 
 class DetailPage extends StatefulWidget {
   const DetailPage({super.key, required this.anime});
@@ -13,15 +15,31 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+
+  late DetailProvider _provider;
+
+  @override
+  void initState() {
+    Provider.of<DetailProvider>(context, listen: false).init();
+    Provider.of<DetailProvider>(context, listen: false).checkSavedOrNot(widget.anime.malId ?? 0);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    _provider = Provider.of<DetailProvider>(context, listen: true);
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             pinned: true,
             actions: [
-              IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.bookmark))
+              IconButton(onPressed: () => _provider.saveOrDelete(widget.anime), icon: Icon(
+                _provider.isSaved ? CupertinoIcons.bookmark_fill
+                    : CupertinoIcons.bookmark
+              ),
+                color: _provider.isSaved ? Colors.white : Colors.white38  ,
+              )
             ],
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
