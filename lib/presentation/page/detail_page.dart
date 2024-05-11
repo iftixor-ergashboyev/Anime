@@ -20,7 +20,7 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   void initState() {
-    Provider.of<DetailProvider>(context, listen: false).init();
+    Provider.of<DetailProvider>(context, listen: false);
     Provider.of<DetailProvider>(context, listen: false).checkSavedOrNot(widget.anime.malId ?? 0);
     super.initState();
   }

@@ -1,3 +1,4 @@
+import 'package:anime/presentation/page/bookmark_page.dart';
 import 'package:flutter/material.dart';
 
 import '../widget/bottom_tab.dart';
@@ -14,7 +15,7 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
   final _pages = [
     const HomePage(),
-    Container(),
+    const BookmarkPage(),
     Container(),
     Container(),
   ];

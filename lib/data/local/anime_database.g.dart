@@ -77,15 +77,15 @@ class _$AnimeDatabase extends AnimeDatabase {
       onOpen: (database) async {
         await callback?.onOpen?.call(database);
       },
-      onUpgrade: (database, startVersion, endVersion) async {
-        await MigrationAdapter.runMigrations(
-            database, startVersion, endVersion, migrations);
-
-        await callback?.onUpgrade?.call(database, startVersion, endVersion);
-      },
+      // onUpgrade: (database, startVersion, endVersion) async {
+      //   await MigrationAdapter.runMigrations(
+      //       database, startVersion, endVersion, migrations);
+      //
+      //   await callback?.onUpgrade?.call(database, startVersion, endVersion);
+      // },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `AnimeDb` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `animeId` INTEGER, `name` TEXT, `nameKanji` TEXT, `nickName` TEXT, `about` TEXT, `imageData` BLOB)');
+            'CREATE TABLE IF NOT EXISTS `anime_db` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `animeId` INTEGER, `name` TEXT, `nameKanji` TEXT, `nickName` TEXT, `about` TEXT, `imageData` BLOB)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -106,7 +106,7 @@ class _$AnimeDao extends AnimeDao {
   )   : _queryAdapter = QueryAdapter(database, changeListener),
         _animeDbInsertionAdapter = InsertionAdapter(
             database,
-            'AnimeDb',
+            'anime_db',
             (AnimeDb item) => <String, Object?>{
                   'id': item.id,
                   'animeId': item.animeId,
@@ -119,7 +119,7 @@ class _$AnimeDao extends AnimeDao {
             changeListener),
         _animeDbDeletionAdapter = DeletionAdapter(
             database,
-            'AnimeDb',
+            'anime_db',
             ['id'],
             (AnimeDb item) => <String, Object?>{
                   'id': item.id,
