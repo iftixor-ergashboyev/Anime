@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../viewmodel/home_viewmodel.dart';
@@ -12,7 +13,7 @@ import '../widget/anime_top_item.dart';
 import 'detail_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+   HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -67,9 +68,9 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         const Gap(20),
-        const Text(
+         Text(
           "\t\tTrending now",
-          style: TextStyle(fontSize: 17),
+          style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 17),)
         ),
         const Gap(10),
         SizedBox(
@@ -91,9 +92,9 @@ class _HomePageState extends State<HomePage> {
               : Container(),
         ),
         const Gap(10),
-        const Text(
+         Text(
           "\t\tNew Episodes",
-          style: TextStyle(fontSize: 17),
+          style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 17),)
         ),
         const Gap(10),
         SizedBox(

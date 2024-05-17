@@ -2,6 +2,7 @@ import 'package:anime/data/repository/local_repository_impl.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'main_page.dart';
 
@@ -32,11 +33,14 @@ class IntroPage extends StatelessWidget {
                   mainAxisAlignment:  MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                Text("zeto", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40)),
+                Text("zeto", style: GoogleFonts.poppins(
+                    textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40))),
                 const Gap(20),
                 Text("Embark on animated journey like\n never before,"
-                    "your gateway to the\n ultimate anime experience", textAlign: TextAlign.center, style: TextStyle(
-                  color: Colors.white
+                    "your gateway to the\n ultimate anime experience", textAlign: TextAlign.center, style: GoogleFonts.poppins(
+                    textStyle: TextStyle(
+                        color: Colors.white
+                    )
                 )),
                 Gap(20),
                 SizedBox(
@@ -49,7 +53,7 @@ class IntroPage extends StatelessWidget {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))
                     ),
                       onPressed: () => _onStart(context),
-                      child: Text("Watch anime")
+                      child: Text("Watch anime", style: GoogleFonts.poppins())
                   ),
                 )],
                 ),

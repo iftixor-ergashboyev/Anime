@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         home: FutureBuilder(
           future: _repo.isFirstTime(),
           builder: (context, data) {
-            return data.data == true ? const HomePage() : MainPage();
+            return data.data == true ?  HomePage() : MainPage();
           },
         ),
       ),

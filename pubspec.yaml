@@ -58,6 +58,7 @@ dependencies:
   sqflite: ^2.3.3+1
   http: ^1.2.1
   flutter_swipe: ^1.0.1
+  flutter_slidable: ^3.1.0
 
 dev_dependencies:
   flutter_test:

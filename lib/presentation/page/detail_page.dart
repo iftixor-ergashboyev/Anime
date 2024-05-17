@@ -3,6 +3,7 @@ import 'package:anime/presentation/viewmodel/detail_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class DetailPage extends StatefulWidget {
@@ -63,12 +64,12 @@ class _DetailPageState extends State<DetailPage> {
               padding: EdgeInsets.all(12),
               child: Column(
                 children: [
-                  Text(widget.anime.nameKanji ?? "", style: TextStyle(fontSize: 20)),
+                  Text(widget.anime.nameKanji ?? "", style: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 20))),
                   Gap(20),
                   for(int i = 0; i < (widget.anime.nicknames?.length ?? 0); i++)
-                    Text(widget.anime.nicknames?[i] ?? ""),
+                    Text(widget.anime.nicknames?[i] ?? "", style: GoogleFonts.poppins()),
                   Gap(20),
-                  Text(widget.anime.about ?? "")
+                  Text(widget.anime.about ?? "", style: GoogleFonts.poppins())
                 ],
               ),
             ),
